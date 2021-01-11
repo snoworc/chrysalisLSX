@@ -1,0 +1,12 @@
+/* Declares the module parameters for the application - OS400. */
+/* Always add the new exports to the bottom */
+
+STRPGMEXP PGMLVL(*CURRENT) SIGNATURE("NOTES")
+
+EXPORT SYMBOL("MainEntryPoint")
+EXPORT SYMBOL("LSXClassControl")
+
+/* //{{LSX_AUTHOR_CODE_More_Exports */
+/* //}} */
+
+ENDPGMEXP

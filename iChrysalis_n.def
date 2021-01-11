@@ -1,0 +1,17 @@
+; Declares the module parameters for the application - Win32.
+
+LIBRARY      Chrysalis
+
+DESCRIPTION  'LotusScript Chrysalis class library'
+
+STACKSIZE    0
+HEAPSIZE     4096   ; initial heap size
+
+EXPORTS
+   MainEntryPoint          @1
+   
+   LSXClassControl         @2
+
+   ;{{LSX_AUTHOR_CODE_More_Exports
+   ;}}
+

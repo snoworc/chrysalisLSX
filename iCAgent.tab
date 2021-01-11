@@ -1,0 +1,84 @@
+/*========================================================================*\
+
+   Copyright Lotus Development Corp. 1995 - 1999
+
+
+   The enclosed code created by Lotus Development Corporation, is
+   sample code. This sample code is provided to you solely for the
+   purpose of assisting you in the development of your LotusScript
+   Extension (LSX) applications.
+
+   File: iCAgent.tab
+
+   Description:
+      Class registration tables for CAgent class
+
+\*========================================================================*/
+
+static LSUINT CAgent_methodnameids[] =
+{
+   CCHRYSALIS_CAGENTMETHOD_BUILDAGENT,
+   CCHRYSALIS_CAGENTMETHOD_NEW,
+   CCHRYSALIS_CAGENTMETHOD_READAGENT,
+};
+
+#define  N_CAGENT_METHODS  ((sizeof(CAgent_methodnameids)) / (sizeof(LSUINT)))
+
+
+#define  N_CAGENT_PROPS  0
+
+
+#define  N_CAGENT_EVENTS  0
+
+
+/*
+** NOTE: all the signature arrays are n_args + 1,
+**       where n_args includes "this", and the extra
+**       slot (which comes first) is the return type.
+*/
+
+static LSDATATYPE CAGENTBuildAgentArgs[N_CAGENT_BUILDAGENT_ARGS +1] =
+{
+   LSX_BYVAL_BOOLEAN,
+   LSX_THIS_PTR,
+
+};
+
+
+static LSDATATYPE CAGENTNewArgs[N_CAGENT_NEW_ARGS +1] =
+{
+   LSX_CLASS_RET(CCHRYSALIS_CAGENT_ID),
+   LSX_THIS_PTR,
+   LSX_NOTES_CLASS_ARG(CNOTES_CLASS_NOTE),
+};
+
+static CHARTYPE *  CAGENTNewArgNames[N_CAGENT_NEW_ARGS - 1] =
+{
+   LIT_STR("parmDoc")
+};
+static LSDATATYPE CAGENTReadAgentArgs[N_CAGENT_READAGENT_ARGS +1] =
+{
+   LSX_NOTES_CLASS_RET(CNOTES_CLASS_NOTE),
+   LSX_THIS_PTR,
+   LSX_NOTES_CLASS_ARG(CNOTES_CLASS_MACRO),
+};
+
+static CHARTYPE *  CAGENTReadAgentArgNames[N_CAGENT_READAGENT_ARGS - 1] =
+{
+   LIT_STR("nAgent")
+};
+
+
+
+
+static LSADTMETHODDESCR CAgent_gmethods[N_CAGENT_METHODS] =
+{
+   {(LSPLTSTR)LSNULL, CCHRYSALIS_CAGENTMETHOD_BUILDAGENT, CAGENTBuildAgentArgs, (LSREGNAME *) LSNULL, N_CAGENT_BUILDAGENT_ARGS, LSX_REGULAR_PROC, LSI_NO_HELPID},
+   {(LSPLTSTR)LSNULL, CCHRYSALIS_CAGENTMETHOD_NEW, CAGENTNewArgs, (LSREGNAME *) CAGENTNewArgNames, N_CAGENT_NEW_ARGS, LSX_NEW_PROC, LSI_NO_HELPID},
+   {(LSPLTSTR)LSNULL, CCHRYSALIS_CAGENTMETHOD_READAGENT, CAGENTReadAgentArgs, (LSREGNAME *) CAGENTReadAgentArgNames, N_CAGENT_READAGENT_ARGS, LSX_REGULAR_PROC, LSI_NO_HELPID},
+};
+
+
+
+
+
