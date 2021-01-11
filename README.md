@@ -7,7 +7,7 @@ I wrote this class to register an LSX on your machine. Feel free to use this cla
   
 Methods:  
   
-Addkey(keyname as string, keyvalue as string, optional byval keysection as integer) as integer  
+   Addkey(keyname as string, keyvalue as string, optional byval keysection as integer) as integer  
   
 Adds a new key.  
   
