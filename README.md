@@ -311,7 +311,9 @@ Example:
   
 **Methods:**  
   
-BuildView() as Variant  
+
+    BuildView() as Variant  
+
   
 This method uses the parameter document (NotesDocument) you passed to the constructor. It inspects each of the Fields you set on the parameter document and applies them to the Agent.  
   
@@ -633,12 +635,9 @@ ColHideDetailRows - String array. Indicates whether of not to hide row total det
     Dim doc as NotesDocument  
       
       
-      
     Call db.open("Your server", "tbn\lsxtest.nsf") ' Use your own database  
       
     Set doc = New NotesDocument(db)  
-      
-      
       
     doc.Form = "ParmDoc"  
       
@@ -669,7 +668,6 @@ ColHideDetailRows - String array. Indicates whether of not to hide row total det
     doc.HeadingDisplay = LNVFHEADINGDISPLAY_BEVELED  
       
     doc.ShowReplicationConflicts = 1 ' 1 or 0  
-      
       
       
     ' As far as setting columns go, defaults will be preserved if you do NOT include  
@@ -715,7 +713,6 @@ ColHideDetailRows - String array. Indicates whether of not to hide row total det
     Dim arHideDetailRows(2) as String  
       
     Dim arTotalsOption(2) As Integer  
-      
       
       
     arColTitles(0) = "Column #1"  
@@ -884,13 +881,10 @@ ColHideDetailRows - String array. Indicates whether of not to hide row total det
       
     doc.ColHideDetailRows = arHideDetailRows$()  
       
-      
-      
     doc.Save False, True, True  
-      
-      
       
     Set view = New CView(doc)  
       
     Call view.BuildView()
+
 
