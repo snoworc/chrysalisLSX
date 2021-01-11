@@ -93,6 +93,195 @@ Dim ex_status As Integer
 ex_status = Execute(ex)
 
 
+
+**CAgent**  
+  
+To initialize, pass a NotesDocument to the constructor. This NotesDocument needs to be saved in the database where the work is to be performed. You may delete the NotesDocument when done.  
+  
+  
+  
+*Example:*  
+  
+
+    Dim parmDoc as New NotesDocument(db)  
+      
+    parmDoc.AgentName = "MyAgent"  
+      
+    parmDoc.Comment = "Changed the comment on : " & Now()  
+      
+    Call parmDoc.Save(False, True)  
+      
+    Dim agent as New CAgent(parmDoc)  
+
+  
+  
+  
+**Methods:**  
+  
+ReadAgent(NotesAgent agent) as NotesDocument  
+  
+This method is not yet implemented…  
+  
+  
+  
+BuildAgent() as Variant  
+  
+This method uses the parameter document (NotesDocument) you passed to the constructor. It inspects each of the Fields you set on the parameter document and applies them to the Agent.  
+  
+  
+  
+*Example:*  
+  
+
+    Dim parmDoc as New NotesDocument(db)  
+      
+    parmDoc.AgentName = "MyAgent"  
+      
+    parmDoc.Comment = "Changed the comment on : " & Now()  
+      
+    Call parmDoc.Save(False, True)  
+      
+    Dim agent as New CAgent(parmDoc)  
+      
+    agent.BuildAgent()  
+      
+    Call parmDoc.Remove(True)  
+
+  
+  
+  
+Parameter Document Fields:  
+  
+AgentName - String. Name of the agent you are modifying.  
+  
+  
+  
+AssistSearch - Integer. 0 - 8. Indicates what the agent will run on. AKA - the unprocesseddocuments collection.  
+  
+Const ASSISTSEARCH_TYPE_NONE% = 0 '/ _Unknown or unavailable_ /  
+  
+Const ASSISTSEARCH_TYPE_ALL% = 1 '/ _All documents in database_ /  
+  
+Const ASSISTSEARCH_TYPE_NEW% = 2 '/ _New documents since last run_ /  
+  
+Const ASSISTSEARCH_TYPE_MODIFIED% = 3 '/ _New or modified docs since last run_ /  
+  
+Const ASSISTSEARCH_TYPE_SELECTED% = 4 '/ _Selected documents_ /  
+  
+Const ASSISTSEARCH_TYPE_VIEW% = 5 '/ _All documents in view_ /  
+  
+Const ASSISTSEARCH_TYPE_UNREAD% = 6 '/ _All unread documents_ /  
+  
+Const ASSISTSEARCH_TYPE_PROMPT% = 7 '/ _Prompt user_ /  
+  
+Const ASSISTSEARCH_TYPE_UI% = 8 '/ _Works on the selectable object_ /  
+  
+  
+  
+AssistTrigger - Integer. 0 - 6. Defines what triggers the agent.  
+  
+Const ASSISTTRIGGER_TYPE_NONE% = 0 '/ _Unknown or unavailable_ /  
+  
+Const ASSISTTRIGGER_TYPE_SCHEDULED% = 1 '/ _According to time schedule_ /  
+  
+Const ASSISTTRIGGER_TYPE_NEWMAIL% = 2 '/ _When new mail delivered_ /  
+  
+Const ASSISTTRIGGER_TYPE_PASTED% = 3 '/ _When documents pasted into database_ /  
+  
+Const ASSISTTRIGGER_TYPE_MANUAL% = 4 '/ _Manually executed_ /  
+  
+Const ASSISTTRIGGER_TYPE_DOCUPDATE% = 5 '/ _When doc is updated_ /  
+  
+Const ASSISTTRIGGER_TYPE_SYNCHNEWMAIL% = 6 '/ _Synchronous new mail agent executed by router_ /  
+  
+  
+  
+Comment - String. The agent's comment.  
+  
+  
+  
+EndHour - Integer. Applies to agents that run more than once a day. This is the hour it will stop running.  
+  
+  
+  
+EndMinute - Integer. Applies to agents that run more than once a day. This is the minute it will stop running.  
+  
+  
+  
+Interval - Integer. This is unit of the IntervalType.  
+  
+  
+  
+IntervalType - Integer. 0 - 4. Applies to scheduled agents. This is the frequency the agent will run.  
+  
+Const ASSISTINTERVAL_TYPE_NONE% = 0 '/ _Unknown_ /  
+  
+Const ASSISTINTERVAL_TYPE_MINUTES% = 1  
+  
+Const ASSISTINTERVAL_TYPE_DAYS% = 2  
+  
+Const ASSISTINTERVAL_TYPE_WEEK% = 3  
+  
+Const ASSISTINTERVAL_TYPE_MONTH% = 4  
+  
+  
+  
+IsEnabled - Integer. 0 = Disabled. 1 = Enabled.  
+  
+  
+  
+IsHidden - Integer. 0 = Hidden. 1 = Visible.  
+  
+  
+  
+IsNewCopy - Integer.  
+  
+  
+  
+IsPrivate - Integer. 0 = Shared. 1 = Private.  
+  
+  
+  
+ODSFlags - Long. Hex value. You may enable 0-5 of these flags:  
+  
+Const ASSISTODS_FLAG_HIDDEN& = &h00000001 '/ _TRUE if manual assistant is hidden_ /  
+  
+Const ASSISTODS_FLAG_NOWEEKENDS& = &h00000002 '/ _Do not run on weekends_ /  
+  
+Const ASSISTODS_FLAG_STOREHIGHLIGHTS& = &h00000004 '/ _TRUE if storing highlights_ /  
+  
+Const ASSISTODS_FLAG_MAILANDPASTE& = &h00000008 '/ _TRUE if this is the V3-style mail and paste macro_ /  
+  
+Const ASSISTODS_FLAG_CHOOSEWHENENABLED& = &h00000010 '/ _TRUE if server to run on should be chosed when enabled_ /  
+  
+  
+  
+RunOnServer - String. Name of the server to run on.  
+  
+  
+  
+StartHour - Integer. Applies to agents that run more than once a day. This is the hour it will start running.  
+  
+  
+  
+StartMinute - Integer. Applies to agents that run more than once a day. This is the minute it will start running.  
+  
+  
+  
+*Example:*  
+
+```
+parmdoc.Form = &quot;ParmDoc&quot;<br/>
+parmdoc.AgentName = &quot;Scheduled Agent&quot;<br/>
+parmdoc.IsEnabled = 0<br/>
+parmdoc.AssistSearch = ASSISTSEARCH_TYPE_ALL<br/>
+parmdoc.AssistTrigger = ASSISTTRIGGER_TYPE_SCHEDULED<br/>
+parmdoc.Interval =1<br/>
+parmdoc.IntervalType = ASSISTINTERVAL_TYPE_DAYS<br/>
+parmdoc.Comment = &quot;Last updated: &quot; &amp; Now
+```
+
+
 **CView**  
   
 To initialize, pass a NotesDocument to the constructor. This NotesDocument needs to be saved in the database where the work is to be performed. You may delete the NotesDocument when done.  
