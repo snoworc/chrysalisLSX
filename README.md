@@ -1,5 +1,5 @@
 
-CVMRegistry  
+**CVMRegistry** 
   
 I wrote this class to register an LSX on your machine. Feel free to use this class to register any LSXs you write.  
   
