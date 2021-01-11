@@ -1,4 +1,5 @@
 
+  
 ## **CVMRegistry** 
   
 I wrote this class to register an LSX on your machine. Feel free to use this class to register any LSXs you write.  
@@ -19,7 +20,7 @@ Removes a key.
   
   
   
-Example:  
+*Example:*  
 
 ```
 ' Use this to unregister this LSX.
@@ -37,7 +38,7 @@ Shows a key value.
   
   
   
-Example:  
+*Example:*  
 
 ```
 ' Prints --> "C:\Lotus\Notes\Chrysalis.dll"
@@ -74,7 +75,7 @@ Registers a LSX.
   
   
   
-Example:  
+*Example:*  
   
 Dim ex As String  
   
@@ -118,13 +119,17 @@ To initialize, pass a NotesDocument to the constructor. This NotesDocument needs
   
 **Methods:**  
   
-ReadAgent(NotesAgent agent) as NotesDocument  
+
+    ReadAgent(NotesAgent agent) as NotesDocument  
+
   
 This method is not yet implemented…  
   
   
   
-BuildAgent() as Variant  
+
+    BuildAgent() as Variant  
+
   
 This method uses the parameter document (NotesDocument) you passed to the constructor. It inspects each of the Fields you set on the parameter document and applies them to the Agent.  
   
