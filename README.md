@@ -1,5 +1,5 @@
 
-**CVMRegistry** 
+## **CVMRegistry** 
   
 I wrote this class to register an LSX on your machine. Feel free to use this class to register any LSXs you write.  
   
@@ -94,7 +94,7 @@ ex_status = Execute(ex)
 
 
 
-**CAgent**  
+## **CAgent**  
   
 To initialize, pass a NotesDocument to the constructor. This NotesDocument needs to be saved in the database where the work is to be performed. You may delete the NotesDocument when done.  
   
@@ -282,7 +282,7 @@ parmdoc.Comment = &quot;Last updated: &quot; &amp; Now
 ```
 
 
-**CView**  
+## **CView**  
   
 To initialize, pass a NotesDocument to the constructor. This NotesDocument needs to be saved in the database where the work is to be performed. You may delete the NotesDocument when done.  
   
