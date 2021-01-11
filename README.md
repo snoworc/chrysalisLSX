@@ -105,13 +105,6 @@ To initialize, pass a NotesDocument to the constructor. This NotesDocument needs
   
 
     Dim parmDoc as New NotesDocument(db)  
-      
-    parmDoc.AgentName = "MyAgent"  
-      
-    parmDoc.Comment = "Changed the comment on : " & Now()  
-      
-    Call parmDoc.Save(False, True)  
-      
     Dim agent as New CAgent(parmDoc)  
 
   
@@ -276,14 +269,14 @@ StartMinute - Integer. Applies to agents that run more than once a day. This is 
 *Example:*  
 
 ```
-parmdoc.Form = &quot;ParmDoc&quot;<br/>
-parmdoc.AgentName = &quot;Scheduled Agent&quot;<br/>
-parmdoc.IsEnabled = 0<br/>
-parmdoc.AssistSearch = ASSISTSEARCH_TYPE_ALL<br/>
-parmdoc.AssistTrigger = ASSISTTRIGGER_TYPE_SCHEDULED<br/>
-parmdoc.Interval =1<br/>
-parmdoc.IntervalType = ASSISTINTERVAL_TYPE_DAYS<br/>
-parmdoc.Comment = &quot;Last updated: &quot; &amp; Now
+parmdoc.Form = "ParmDoc"
+parmdoc.AgentName = "Scheduled Agent"
+parmdoc.IsEnabled = 0
+parmdoc.AssistSearch = ASSISTSEARCH_TYPE_ALL
+parmdoc.AssistTrigger = ASSISTTRIGGER_TYPE_SCHEDULED
+parmdoc.Interval = 1
+parmdoc.IntervalType = ASSISTINTERVAL_TYPE_DAYS
+parmdoc.Comment = "Last updated: " & Now
 ```
 
 
@@ -296,14 +289,7 @@ To initialize, pass a NotesDocument to the constructor. This NotesDocument needs
 Example:  
   
 
-    Dim parmDoc as New NotesDocument(db)  
-      
-    parmDoc.ViewName = "MyView"  
-      
-    parmDoc.Comment = "Changed the comment on : " & Now()  
-      
-    Call parmDoc.Save(False, True)  
-      
+    Dim parmDoc as New NotesDocument(db)        
     Dim view as New CView(parmDoc)  
       
 
